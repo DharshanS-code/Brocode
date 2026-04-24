@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Brocode | Secure Chat Encoder</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#075E54">
+</head>
+<body>
+    <header class="header">
+        <div class="header-info">
+            <h1 class="app-title">Brocode</h1>
+            <span class="app-subtitle">Secure Text & Image Encoder</span>
+        </div>
+        <div class="header-actions">
+            <button id="btnDarkMode" aria-label="Toggle Dark Mode">🌙</button>
+            <button id="btnClearAll" aria-label="Clear Chat">🗑️</button>
+            <button id="btnAbout" aria-label="About">ℹ️</button>
+        </div>
+    </header>
+    <main class="chat-area" id="chatArea">
+        <div class="message msg-received helper-msg">
+            <div class="msg-text">🔒 <b>Brocode</b><br>Paste text, or attach an image. Images will be securely uploaded to the cloud and converted to a 5-digit share code!</div>
+            <div class="msg-time">Now</div>
+        </div>
+    </main>
+    <div id="toast" class="toast hidden">Copied to clipboard!</div>
+    <canvas id="hiddenCanvas" style="display:none;"></canvas>
+    <footer class="input-panel">
+        <div class="helper-text">⚠️ Use the exact same key to decrypt.</div>
+        <div class="controls-row">
+            <input type="password" id="cryptoKey" placeholder="Secret Key" required>
+            <select id="cryptoMode">
+                <option value="encrypt">Encrypt</option>
+                <option value="decrypt">Decrypt</option>
+            </select>
+        </div>
+        <form id="chatForm" class="message-row">
+            <input type="file" id="imageInput" accept="image/png, image/jpeg, image/jpg, image/webp" hidden>
+            <button type="button" id="btnAttach" class="attach-btn" aria-label="Attach Image">📎</button>
+            <textarea id="messageInput" placeholder="Type message or 5-digit code..." rows="1" required></textarea>
+            <button type="submit" class="send-btn" aria-label="Send">
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+                    <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"></path>
+                </svg>
+            </button>
+        </form>
+        <div id="imagePreviewContainer" class="hidden">
+            <span id="imagePreviewName">Image.jpg</span>
+            <button type="button" id="btnRemoveImage">❌</button>
+        </div>
+    </footer>
+    <div id="aboutModal" class="modal hidden">
+        <div class="modal-content">
+            <span id="closeModal" class="close-btn">&times;</span>
+            <h2>About Brocode</h2>
+            <p>Brocode is a secure, client-side encryption tool designed to keep your messages and images private over public channels.</p>
+            <div class="modal-links">
+                <a href="mailto:dharshandcu@gmail.com">Email Developer</a> | 
+                <a href="https://github.com/DharshanS-code/Brocode" target="_blank">GitHub Repo</a>
+            </div>
+        </div>
+    </div>
+    <script type="module" src="app.js"></script>
+</body>
+  </html>
